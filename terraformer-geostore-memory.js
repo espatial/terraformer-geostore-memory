@@ -51,6 +51,16 @@
     }
   };
 
+  Memory.prototype.getMany = function(ids, callback){
+    var ret = [];
+    if (callback) {
+      for (var i =0; i < ids.length; i++) {
+        ret.push(this.data[ids[i]]);
+      }
+      callback(null, ret);
+    }
+  };
+
   Memory.prototype.update = function(geojson, callback){
     this.data[geojson.id] = geojson;
     if (callback) {
